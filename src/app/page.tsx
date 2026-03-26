@@ -8,6 +8,7 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
+    // Check if user is logged in, redirect accordingly
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
         router.replace("/dashboard");
