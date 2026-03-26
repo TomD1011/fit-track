@@ -137,29 +137,40 @@ function CoachDashboard({
 }
 
 function ClientDashboard() {
+  const router = useRouter();
+
   return (
-    <div className="space-y-6">
-      <div className="bg-[var(--card)] border border-[var(--border)] rounded-xl p-6">
-        <h2 className="text-xl font-semibold mb-2">Your Workouts</h2>
-        <p className="text-[var(--muted)]">
-          Your assigned programmes will appear here.
-        </p>
-      </div>
-
-      <div className="space-y-3">
-        <div className="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4">
-          <h3 className="font-medium">Today&apos;s Workout</h3>
-          <p className="text-sm text-[var(--muted)]">No programme assigned yet</p>
+    <div className="space-y-3">
+      <button
+        onClick={() => router.push("/workout")}
+        className="w-full text-left bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 flex items-center justify-between hover:border-[var(--accent)] transition-colors"
+      >
+        <div>
+          <h3 className="font-medium">Start Workout</h3>
+          <p className="text-sm text-[var(--muted)]">
+            View your programme and log today&apos;s session
+          </p>
         </div>
-        <div className="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4">
-          <h3 className="font-medium">Body Weight</h3>
-          <p className="text-sm text-[var(--muted)]">Track your weight over time</p>
-        </div>
-      </div>
+        <span className="text-[var(--accent)] text-lg">&#8594;</span>
+      </button>
 
-      <p className="text-center text-sm text-[var(--muted)] pt-4">
-        Workout tracking coming in Phase 3
-      </p>
+      <button
+        onClick={() => router.push("/workout/history")}
+        className="w-full text-left bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 flex items-center justify-between hover:border-[var(--accent)] transition-colors"
+      >
+        <div>
+          <h3 className="font-medium">Workout History</h3>
+          <p className="text-sm text-[var(--muted)]">
+            See your completed workouts
+          </p>
+        </div>
+        <span className="text-[var(--accent)] text-lg">&#8594;</span>
+      </button>
+
+      <div className="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4">
+        <h3 className="font-medium">Body Weight</h3>
+        <p className="text-sm text-[var(--muted)]">Coming in Phase 4</p>
+      </div>
     </div>
   );
 }
