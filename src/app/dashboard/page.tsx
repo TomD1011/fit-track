@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import Header from "@/components/Header";
+import InstallPrompt from "@/components/InstallPrompt";
 
 type Profile = {
   id: string;
@@ -74,6 +75,8 @@ export default function DashboardPage() {
         userName={profile?.name}
         userRole={profile?.role}
       />
+
+      <InstallPrompt />
 
       <main className="max-w-lg mx-auto px-4 py-6">
         {profile?.role === "coach" ? (
@@ -167,10 +170,18 @@ function ClientDashboard() {
         <span className="text-[var(--accent)] text-lg">&#8594;</span>
       </button>
 
-      <div className="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4">
-        <h3 className="font-medium">Body Weight</h3>
-        <p className="text-sm text-[var(--muted)]">Coming in Phase 4</p>
-      </div>
+      <button
+        onClick={() => router.push("/bodyweight")}
+        className="w-full text-left bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 flex items-center justify-between hover:border-[var(--accent)] transition-colors"
+      >
+        <div>
+          <h3 className="font-medium">Body Weight</h3>
+          <p className="text-sm text-[var(--muted)]">
+            Track your weight over time
+          </p>
+        </div>
+        <span className="text-[var(--accent)] text-lg">&#8594;</span>
+      </button>
     </div>
   );
 }
